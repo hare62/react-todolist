@@ -2,7 +2,9 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import store from './store';
 import TodolistUI from './TodoListUI';
-import { CHANGE_INPUT_VALUE, CHANGE_TODO_ITEM, DELETE_TODO_ITEM} from './store/actionTypes'
+import axios from 'axios';
+import { initListAction, changeInputValue, changeTodoItemAction, deleteTodoItemActon } from './store/actionCreators';
+
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
@@ -28,12 +30,23 @@ class TodoList extends React.Component {
     )
   }
 
+  componentDidMount() {
+    // action只能是一个对象
+
+   
+   
+    axios.get("/list.json").then((res) => {
+      const action = initListAction(res.data)
+      store.dispatch(action)
+    }).catch(() => {
+      alert("error")
+    })
+  }
+
   handlerChangeInputValue(e) {
-    console.log(e.target.value)
-    const action ={
-      type: CHANGE_INPUT_VALUE,
-      value: e.target.value
-    }
+
+    const value = e.target.value
+    const action = changeInputValue(value)
     store.dispatch(action);
   }
 
@@ -42,19 +55,14 @@ class TodoList extends React.Component {
   }
   
   handleButtonClick() {
-    const action = {
-      type: CHANGE_TODO_ITEM,
-    }
+
+    const action = changeTodoItemAction()
     store.dispatch(action);
   }
 
   handleDeleteDotoItem(index) {
 
-    console.log("shangchu",index)
-    const action = {
-      type: DELETE_TODO_ITEM,
-      item:index
-    }
+    const action = deleteTodoItemActon(index)
     store.dispatch(action);
   }
 
