@@ -33,5 +33,7 @@ export default (state =defaultState, action) => {
         newState.list = action.data;
         return newState;
     }
+
+    
     return state;
 }

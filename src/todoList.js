@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import store from './store';
 import TodolistUI from './TodoListUI';
 import axios from 'axios';
-import { initListAction, changeInputValue, changeTodoItemAction, deleteTodoItemActon } from './store/actionCreators';
+import { initListAction, changeInputValue, changeTodoItemAction, deleteTodoItemActon ,getListData} from './store/actionCreators';
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -33,14 +33,23 @@ class TodoList extends React.Component {
   componentDidMount() {
     // action只能是一个对象
 
-   
-   
-    axios.get("/list.json").then((res) => {
-      const action = initListAction(res.data)
-      store.dispatch(action)
-    }).catch(() => {
-      alert("error")
-    })
+    // 把redux-thunk 映入是为了让action可以返回一个函数
+
+
+    const action = getListData();
+    store.dispatch(action);
+
+
+    // axios.get("/list.json").then((res) => {
+    //   const action = initListAction(res.data)
+    //   store.dispatch(action)
+    // }).catch(() => {
+    //   alert("error")
+    // })
+
+
+
+
   }
 
   handlerChangeInputValue(e) {
