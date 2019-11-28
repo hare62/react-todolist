@@ -34,6 +34,5 @@ export default (state =defaultState, action) => {
         return newState;
     }
 
-    
     return state;
 }

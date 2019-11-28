@@ -2,8 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import store from './store';
 import TodolistUI from './TodoListUI';
-import axios from 'axios';
-import { initListAction, changeInputValue, changeTodoItemAction, deleteTodoItemActon ,getListData} from './store/actionCreators';
+import { changeInputValue, changeTodoItemAction, deleteTodoItemActon ,getListDataAction } from './store/actionCreators';
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -20,35 +19,27 @@ class TodoList extends React.Component {
   render() {
 
     return (
-       <TodolistUI
-       inputValue={this.state.inputValue}
-       list={this.state.list}
-       handlerChangeInputValue={this.handlerChangeInputValue}
-       handleButtonClick={this.handleButtonClick}
-       handleDeleteDotoItem={this.handleDeleteDotoItem}
-       />
+      <TodolistUI
+        inputValue={this.state.inputValue}
+        list={this.state.list}
+        handlerChangeInputValue={this.handlerChangeInputValue}
+        handleButtonClick={this.handleButtonClick}
+        handleDeleteDotoItem={this.handleDeleteDotoItem}
+      />
     )
   }
 
   componentDidMount() {
-    // action只能是一个对象
 
-    // 把redux-thunk 映入是为了让action可以返回一个函数
-
-
-    const action = getListData();
+    const action = getListDataAction();
     store.dispatch(action);
 
-
-    // axios.get("/list.json").then((res) => {
-    //   const action = initListAction(res.data)
-    //   store.dispatch(action)
-    // }).catch(() => {
-    //   alert("error")
+    // axios.get('/list.json').then((res) => {
+    //   var action = initListAction(res.data);
+    //   store.dispatch(action);
+    // }).catch((err) => {
+    //   alert(err)
     // })
-
-
-
 
   }
 
@@ -62,7 +53,7 @@ class TodoList extends React.Component {
   handleStoreChange() {
     this.setState(store.getState());
   }
-  
+
   handleButtonClick() {
 
     const action = changeTodoItemAction()
