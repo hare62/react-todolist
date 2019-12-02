@@ -1,7 +1,8 @@
 
 const defaultState = {
     inputValue :'',
-    list:[]
+    list:[],
+    focused: false,
 }
 
 export default (state = defaultState , action) => {
@@ -21,6 +22,25 @@ export default (state = defaultState , action) => {
    if(action.type === 'delete_item_list'){
     const newState = JSON.parse(JSON.stringify(state));
     newState.list.splice(action.index,1)
+    console.log(newState)
+    return newState;
+}
+
+if(action.type === 'is_focused'){
+    console.log("is_focused",action)
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.focused = true;
+    console.log(newState)
+    return newState;
+}
+
+//is_Blur
+
+if(action.type === 'is_Blur'){
+    console.log("is_Blur",action)
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.focused = action.value;
+    console.log(newState)
     return newState;
 }
    
