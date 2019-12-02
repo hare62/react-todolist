@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { GlobalStyle, Header, Logo } from './styled'
 
 class TodoList extends Component {
  
   render() {
     return (<div>
-              <div>
-                <input value = {this.props.inputValue} onChange = {this.props.handleChangeInput}></input>
-                <button onClick = {this.props.handleAddListData} >提交</button>
-              </div>
-              <ul >
-                {
-                   this.props.list.map((item,index) => {
-                    return <li key={index}  onClick={() => {this.props.handleDeleteItem(index)}}>{item}</li>
-                  })
-                }
-               
-              </ul>
+              <GlobalStyle>
+              </GlobalStyle>
+              <Header>
+                   <Logo></Logo>
+              </Header>
           </div>)
 
   }
