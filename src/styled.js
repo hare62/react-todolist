@@ -4,7 +4,7 @@ import logo from './static/img/logo.png';
 
 export const SearchWrapper = styled.div`
   height:56px;
-  width:250px;
+ 
   float:left;
   position:relative;
   .search{
@@ -13,13 +13,13 @@ export const SearchWrapper = styled.div`
       right:20px;
       font-size:24px;
       height: 30px;
-    //   background: #bcbaba;
       margin-top: 14px;
       text-align: center;
       line-height: 30px;
       border-radius: 50%;
       width: 30px;
   }
+ 
 `
 export const Button = styled.div`
   display:inline-block;
@@ -54,8 +54,16 @@ export const SearchInput = styled.input`
     background:#eee;
     padding:0 20px;
     border-radius:28px;
+    transition:width 1s;
     &::placeholder{
         color:#999;
+    }
+    // 用hover 或者 事件去绑定数据来实现都行 但是效果不一样得
+    // &:hover{
+    //  width:300px;
+    // }
+    &.focused{
+        width:300px;
     }
 `
 export const NavItem = styled.div`
