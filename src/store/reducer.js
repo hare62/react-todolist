@@ -1,38 +1,28 @@
-import { CHANGE_INPUT_VALUE, CHANGE_TODO_ITEM, DELETE_TODO_ITEM, INIT_LIST_ACTION} from './actionTypes'
 
 const defaultState = {
-    inputValue: '',
-    list: []
+    inputValue :'',
+    list:[]
 }
-// reducer 是一个纯函数
-// 纯函数就是: 给固定的输入就要有固定的输出  而且不会有任何副作用
-export default (state =defaultState, action) => {
-    if(action.type === CHANGE_INPUT_VALUE){
-        const newState =JSON.parse(JSON.stringify(state));
-        newState.inputValue = action.value;
-        return newState;
-    }
 
-    if(action.type === CHANGE_TODO_ITEM){
-        const newState =JSON.parse(JSON.stringify(state));
-        newState.list.push(newState.inputValue);
-        newState.inputValue = ''
-        return newState;
-    }
+export default (state = defaultState , action) => {
+   if(action.type === 'change_input_value'){
+       const newState = JSON.parse(JSON.stringify(state));
+       newState.inputValue = action.inputValue;
+       return newState;
+   }
 
-    if(action.type === DELETE_TODO_ITEM){
-        
-        const newState =JSON.parse(JSON.stringify(state));
-        newState.list.splice(action.item,1);
-        return newState;
-    }
+   if(action.type === 'add_list_data'){
+       const newState = JSON.parse(JSON.stringify(state));
+       newState.list.push(state.inputValue);
+       newState.inputValue = '';
+       return newState;
+   }
 
-    if(action.type === INIT_LIST_ACTION){
-        
-        const newState =JSON.parse(JSON.stringify(state));
-        newState.list = action.data;
-        return newState;
-    }
-
-    return state;
+   if(action.type === 'delete_item_list'){
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.list.splice(action.index,1)
+    return newState;
+}
+   
+   return state;
 }
