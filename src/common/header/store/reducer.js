@@ -1,3 +1,9 @@
+// 加个命名header 相当于命名空间，防止取重复的变量名称
+// 字符串要用常量去替换掉 用字符串去写很容易出错，并且不会报错，很不容易排查出错误
+// 因此又新建出一个常量文件-constants.js
+// 将常量导出
+// reducer要取接收action 因此要把constants这个文件导入
+
 import * as constants from './constants';
 import { fromJS } from 'immutable';
 

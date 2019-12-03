@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
+// dell老师说:导入actionCreators[包含了方法] 在派发action的时候直接actionCreators点什么就可以拿到
 import { actionCreators } from './store';
+
 import { actionCreators as loginActionCreators } from '../../pages/login/store'
 import {
 	HeaderWrapper,
@@ -125,6 +127,7 @@ const mapDispathToProps = (dispatch) => {
 	return {
 		handleInputFocus(list) {
 			(list.size === 0) && dispatch(actionCreators.getList());
+            // dell老师说:导入actionCreators[包含了方法] 在派发action的时候直接actionCreators点什么就可以拿到
 			dispatch(actionCreators.searchFocus());
 		},
 		handleInputBlur() {

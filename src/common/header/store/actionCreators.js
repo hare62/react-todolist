@@ -8,6 +8,9 @@ const changeList = (data) => ({
 	totalPage: Math.ceil(data.length / 10)
 });
 
+
+// 字符串要用常量去替换掉 用字符串去写很容易出错，并且不会报错，很不容易排查出错误
+// 因此又新建出一个常量文件-constants.js
 export const searchFocus = () => ({
 	type: constants.SEARCH_FOCUS
 });
