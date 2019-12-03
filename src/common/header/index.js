@@ -31,12 +31,15 @@ class Header extends Component {
 		//        the same as handleInputFocus and handleInputBlur well
 		//        运用结构赋值减少冗余代码
 		const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+		// list是一个immutable对像 需要通过toJS()转变成普通对象
 		const newList = list.toJS();
 		const pageList = [];
 
 		if (newList.length) {
+			// 需要判断 有数据才渲染下面的list
 			// 显示list中的数据
 			for (let i = (page - 1) * 10; i < page * 10; i++) {
+				// 需要数组push的时候数据类型一定要是普通数组，而不是immutable对象
 				pageList.push(
 					<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
 				)
@@ -136,6 +139,7 @@ const mapStateToProps = (state) => {
 
 		page: state.getIn(['header', 'page']),
 		totalPage: state.getIn(['header', 'totalPage']),
+		// mouseIn 代表鼠标是否移入 映射到props中
 		mouseIn: state.getIn(['header', 'mouseIn']),
 		login: state.getIn(['login', 'login'])
 	}
@@ -152,10 +156,13 @@ const mapDispathToProps = (dispatch) => {
 		handleInputBlur() {
 			dispatch(actionCreators.searchBlur());
 		},
+		
 		handleMouseEnter() {
+			// 鼠标进入 事件
 			dispatch(actionCreators.mouseEnter());
 		},
 		handleMouseLeave() {
+			// 鼠标移出 事件
 			dispatch(actionCreators.mouseLeave());
 		},
 		handleChangePage(page, totalPage, spin) {

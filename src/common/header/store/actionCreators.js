@@ -24,11 +24,11 @@ export const searchFocus = () => ({
 export const searchBlur = () => ({
 	type: constants.SEARCH_BLUR
 });
-
+// 鼠标进入 action type
 export const mouseEnter = () => ({
 	type: constants.MOUSE_ENTER
 });
-
+// 鼠标移出 action type
 export const mouseLeave = () => ({
 	type: constants.MOUSE_LEAVE
 });

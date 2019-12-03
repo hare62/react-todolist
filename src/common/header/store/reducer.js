@@ -15,6 +15,7 @@ import { fromJS } from 'immutable';
 //通过fromJS将对象封装成immutable对象
 const defaultState = fromJS({
 	focused: false,
+	// mouseIn 代表鼠标是否移入
 	mouseIn: false,
 	list: [],
 	page: 1,
@@ -38,9 +39,10 @@ export default (state = defaultState, action) => {
 				list: action.data,
 				totalPage: action.totalPage
 			});
-			
-		case constants.MOUSE_ENTER:
+		//  鼠标进入reducer mouseIn  true
+		case constants.MOUSE_ENTER: 
 			return state.set('mouseIn', true);
+		//  鼠标移出reducer mouseIn false  
 		case constants.MOUSE_LEAVE:
 			return state.set('mouseIn', false);
 		case constants.CHANGE_PAGE:
