@@ -114,6 +114,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
 	return {
+		// 在映射数据的时候
+		// 因为加入了immutable所以需要用getIn这个方法去获取数据
 		focused: state.getIn(['header', 'focused']),
 		list: state.getIn(['header', 'list']),
 		page: state.getIn(['header', 'page']),

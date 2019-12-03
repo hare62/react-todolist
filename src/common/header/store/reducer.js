@@ -7,6 +7,11 @@
 import * as constants from './constants';
 import { fromJS } from 'immutable';
 
+// immutable.js就是一个库 facebook历时三年开发的一个库
+// immutable对象 不可更改对象
+
+
+//通过fromJS将对象封装成immutable对象
 const defaultState = fromJS({
 	focused: false,
 	mouseIn: false,
@@ -16,6 +21,9 @@ const defaultState = fromJS({
 });
 
 export default (state = defaultState, action) => {
+	// 在向store中return数据的时候,需要用到immutable里面的set方法
+	// immutable对象的set方法，会结合之前immutable对象的值 
+	// 和设置的值，返回一个全新的对象
 	switch(action.type) {
 		case constants.SEARCH_FOCUS:
 			return state.set('focused', true);
