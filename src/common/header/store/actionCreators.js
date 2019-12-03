@@ -4,6 +4,8 @@ import { fromJS } from 'immutable';
 // 为了让 changeList data的普通对象 转变成immutable对象需要引入immutable
 import axios from 'axios';
 
+
+    // 这个常量是该文件自己用的  可以直接使用
 const changeList = (data) => ({
 	// axios4.action中的type也得是常量文件
 	type: constants.CHANGE_LIST,
