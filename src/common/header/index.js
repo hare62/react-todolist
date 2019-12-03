@@ -59,6 +59,7 @@ class Header extends Component {
 						<SearchInfoSwitch
 							onClick={() => handleChangePage(page, totalPage, this.spinIcon)}
 						>
+							{/*  */}
 							<i ref={(icon) => { this.spinIcon = icon }} className="iconfont spin">&#xe851;</i>
 							换一批
 						</SearchInfoSwitch>
@@ -166,12 +167,14 @@ const mapDispathToProps = (dispatch) => {
 			dispatch(actionCreators.mouseLeave());
 		},
 		handleChangePage(page, totalPage, spin) {
+			// 拿到 i 的真实dom
 			let originAngle = spin.style.transform.replace(/[^0-9]/ig, '');
 			if (originAngle) {
 				originAngle = parseInt(originAngle, 10);
 			} else {
 				originAngle = 0;
 			}
+			console.log(spin.style.transform)
 			spin.style.transform = 'rotate(' + (originAngle + 360) + 'deg)';
 
 			if (page < totalPage) {
