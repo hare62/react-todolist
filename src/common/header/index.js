@@ -14,6 +14,7 @@ import {
 	SearchWrapper,
 	NavSearch,
 	SearchInfo,
+	// rejest SearchInfoTitle
 	SearchInfoTitle,
 	SearchInfoSwitch,
 	SearchInfoList,
@@ -23,8 +24,12 @@ import {
 } from './style';
 
 class Header extends Component {
-
+ 
 	getListArea() {
+		// 需求 ： if input is focused with  show getListArea
+		//        else inout blur with hide  getListArea
+		//       the same as handleInputFocus and handleInputBlur well
+		//     
 		const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
 		const newList = list.toJS();
 		const pageList = [];
@@ -39,6 +44,8 @@ class Header extends Component {
 
 		if (focused || mouseIn) {
 			return (
+				//  Accroding to different terms 
+				//  direct return SearchInfo-Component 
 				<SearchInfo 
 					onMouseEnter={handleMouseEnter}
 					onMouseLeave={handleMouseLeave}
@@ -58,6 +65,7 @@ class Header extends Component {
 				</SearchInfo>
 			)
 		}else {
+			// another return null
 			return null;
 		}
 	}
@@ -95,6 +103,7 @@ class Header extends Component {
 						<i className={focused ? 'focused iconfont zoom': 'iconfont zoom'}>
 							&#xe614;
 						</i>
+						{/*according to  show and hide ruturn domConstractor */}
 						{this.getListArea()}
 					</SearchWrapper>
 				</Nav>
