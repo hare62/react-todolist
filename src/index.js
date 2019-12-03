@@ -1,16 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoList from './todoList';
-import { Provider } from 'react-redux';
-import store from './store';
-import './static/iconfont/iconfont.css';
-import './index.css'
+import App from './App';
+import './style.js';
+import './statics/iconfont/iconfont';
 
-const rootElement = document.getElementById('root')
-ReactDOM.render(
-  <Provider store={store}>
-    <TodoList />
-  </Provider>,
-  rootElement
-)
-
+ReactDOM.render(<App />, document.getElementById('root'));
