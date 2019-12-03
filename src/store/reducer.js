@@ -1,4 +1,11 @@
 import { combineReducers } from 'redux-immutable';
+// 在映射数据的时候
+// 因为加入了immutable所以需要用get这个方法去获取数据
+// focused: state.header.get('focused')
+// state是个对象 而state.header是个immutable对象 数据不统一
+// 我们想把state这个对象直接改成immutable对象，那么就需要在主store下边的reducer.js的state封装成immutable对象
+// 又需要去依赖 redux-immutable
+// yarn add redux-immutable
 import { reducer as headerReducer } from '../common/header/store';
 import { reducer as homeReducer } from '../pages/home/store';
 import { reducer as detailReducer } from '../pages/detail/store';

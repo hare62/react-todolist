@@ -9,6 +9,7 @@ import { fromJS } from 'immutable';
 
 // immutable.js就是一个库 facebook历时三年开发的一个库
 // immutable对象 不可更改对象
+// yarn add immutable
 
 
 //通过fromJS将对象封装成immutable对象
