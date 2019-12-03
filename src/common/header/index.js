@@ -35,8 +35,10 @@ class Header extends Component {
 		const pageList = [];
 
 		if (newList.length) {
+			// 显示list中的数据
 			for (let i = (page - 1) * 10; i < page * 10; i++) {
 				pageList.push(
+
 					<SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
 				)
 			}
@@ -129,7 +131,9 @@ const mapStateToProps = (state) => {
 		// state是个对象 而state.header是个immutable对象 数据不统一
 		// 我们想把state这个对象直接改成immutable对象，那么就需要在主store下边的reducer.js的state封装成immutable对象
 		focused: state.getIn(['header', 'focused']),
+		// 在显示页面需要映射到props中
 		list: state.getIn(['header', 'list']),
+
 		page: state.getIn(['header', 'page']),
 		totalPage: state.getIn(['header', 'totalPage']),
 		mouseIn: state.getIn(['header', 'mouseIn']),
@@ -140,6 +144,7 @@ const mapStateToProps = (state) => {
 const mapDispathToProps = (dispatch) => {
 	return {
 		handleInputFocus(list) {
+			// InputFocus send request
 			(list.size === 0) && dispatch(actionCreators.getList());
             // dell老师说:导入actionCreators[包含了方法] 在派发action的时候直接actionCreators点什么就可以拿到
 			dispatch(actionCreators.searchFocus());

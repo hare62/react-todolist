@@ -4,6 +4,7 @@
 // 将常量导出
 export const SEARCH_FOCUS = 'header/SEARCH_FOCUS';
 export const SEARCH_BLUR = 'header/SEARCH_BLUR';
+// axios5.action中的type也得是常量文件
 export const CHANGE_LIST ='header/CHANGE_LIST';
 export const MOUSE_ENTER = 'header/MOUSE_ENTER';
 export const MOUSE_LEAVE = 'header/MOUSE_LEAVE';

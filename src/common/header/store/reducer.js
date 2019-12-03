@@ -30,11 +30,15 @@ export default (state = defaultState, action) => {
 			return state.set('focused', true);
 		case constants.SEARCH_BLUR:
 			return state.set('focused', false);
+			
 		case constants.CHANGE_LIST:
+
 			return state.merge({
+				// axios6.返回新的state 这里合并了 此刻list,action.data都是immutable对象 
 				list: action.data,
 				totalPage: action.totalPage
 			});
+			
 		case constants.MOUSE_ENTER:
 			return state.set('mouseIn', true);
 		case constants.MOUSE_LEAVE:
