@@ -183,6 +183,7 @@ const mapDispathToProps = (dispatch) => {
 				dispatch(actionCreators.changePage(1));
 			}
 		},
+		// 调取登录页面的login
 		logout() {
 			dispatch(loginActionCreators.logout())
 		}

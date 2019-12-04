@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 // yarn add react-router-dom
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './common/header';
+//引入页面
 import Home from './pages/home';
 import Detail from './pages/detail/loadable.js';
 import Login from './pages/login';
